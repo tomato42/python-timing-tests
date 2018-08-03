@@ -127,7 +127,7 @@ which(unlist(r) < 0.05/(nrow(normalised)-1))
 a = read.csv(file="timing-hmac-split-perf-1.csv", header=FALSE)
 all_data = as.matrix(a)
 
-for (i in 2:18) {
+for (i in 2:30) {
   name = paste("timing-hmac-split-perf-", i, ".csv", sep="")
   a = read.csv(file=name, header=FALSE)
   all_data = cbind(all_data, as.matrix(a))
