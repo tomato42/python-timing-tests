@@ -96,6 +96,20 @@ levelplot(z~x*y, data=d, xlab="b", ylab="a", at=my.at, colorkey=list(at=my.at, l
 
 
 
+a = read.csv(file="timing-eq-timeit-1.csv", header=FALSE, col.names=seq(1, 20), fill=TRUE)
+data = as.matrix(a)
+med = apply(data, 1, median, na.rm=TRUE)
+# full lines
+len = length(med)
+columns = ceiling(length(med) / 256)
+d = data.frame(x=rep(seq(0, 255), length.out=len, 256),
+               y=rep(seq(0, 255), length.out=len, each=256),
+               z=med)
+my.at = seq(min(med), max(med), length=40)
+levelplot(z~x*y, data=d, xlab="b", ylab="a", at=my.at, colorkey=list(at=my.at, labels=list(at=my.at)))
+
+
+
 
 
 a = read.csv(file="timing-hmac-split-perf-1.csv", header=FALSE)
